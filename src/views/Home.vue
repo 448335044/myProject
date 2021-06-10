@@ -12,7 +12,8 @@ export default {
         }
     },
     created() {
-        this.user = this.$store.state.uesr
+        console.log('module', this.$store);
+        this.user = this.$store.state.userStore.uesr
     }
 }
 </script>
