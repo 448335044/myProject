@@ -29,6 +29,10 @@ module.exports = {
             type: 'asset/resource',
           },
           {
+            test: /\.less$/,
+            use: ['style-loader','css-loader','less-loader']
+          }, 
+          {
             test: /\.vue$/,
             loader: 'vue-loader',
             options: {
@@ -40,6 +44,7 @@ module.exports = {
                         'less-loader'
                     ]
                 }
+                
             }
           },
         ],
@@ -55,6 +60,7 @@ module.exports = {
     resolve: { alias: { vue: 'vue/dist/vue.esm.js' } },
     devServer: {
         contentBase: './dist',
+        inline: false,
         // open: false,  // 自动打开浏览器
     },
     // devServer: {
