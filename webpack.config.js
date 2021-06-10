@@ -46,9 +46,11 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
-        // new HtmlWebpackPlugin({
-        // title: '管理输出',
-        // }),
+        new HtmlWebpackPlugin({
+            // chunks:['/index'],
+            // filename:'index.html',
+            template:'index.html'  
+        }),
     ],
     resolve: { alias: { vue: 'vue/dist/vue.esm.js' } },
     devServer: {
