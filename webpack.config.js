@@ -68,7 +68,12 @@ module.exports = {
 
         // new ExtractTextPlugin("style.css") //提取出来的样式放在style.css文件中
     ],
-    resolve: { alias: { vue: 'vue/dist/vue.esm.js' } },
+    resolve: { 
+      alias: { 
+        vue: 'vue/dist/vue.esm.js',
+        '@': path.resolve(__dirname, 'src'),
+      } 
+    },
     devServer: {
         contentBase: './dist',
         inline: false,

@@ -1,6 +1,6 @@
 // 输入框
 @import "vars";
-@import "mixins/text";
+@import "mixin/text";
 
 .a-input-block {
   padding: $_*20;

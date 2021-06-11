@@ -1,7 +1,8 @@
 <template>
   <div class="about">
+    <input type="text" value="输入框">
+    <div class="a-btn">按钮</div>
       {{weaterStatus}}
-      about
       {{messageStoreContent}}
   </div>
 </template>
@@ -30,7 +31,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../scss/common.scss';
+@import '@/scss/common.scss';
+
   .about{
     font-size: 20 * $px;
   }
