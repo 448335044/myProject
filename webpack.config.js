@@ -51,6 +51,8 @@ module.exports = {
     },
     plugins: [
         new VueLoaderPlugin(),
+
+        // 根据指定的html文件作为模板，打包生成对应的html文件
         new HtmlWebpackPlugin({
             // chunks:['/index'],
             // filename:'index.html',

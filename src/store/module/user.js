@@ -7,7 +7,9 @@ export default {
     },
 
     getters: {
-
+        // status(state) {
+        //     return `uuu公共-还在下大雨`
+        // }
     },
 
     mutations: {
@@ -15,6 +17,9 @@ export default {
     },
     
     actions: {
-
+        userAction(context, p) {
+            console.log('U-context', context);
+            console.log('U-p', p);
+        }
     }
 }
