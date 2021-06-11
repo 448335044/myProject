@@ -1,0 +1,8 @@
+@import './ui/vars';
+// 1rem = W/20
+// 设计稿按DW = 375px
+// 则设计稿1px = $_ = 1/18.75rem
+$px: 1rem / 20;
+$x-nav-height: 40 * $px;
+
+

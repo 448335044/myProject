@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="about">
       {{weaterStatus}}
       about
       {{messageStoreContent}}
@@ -29,6 +29,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+@import '../scss/common.scss';
+  .about{
+    font-size: 20 * $px;
+  }
 </style>

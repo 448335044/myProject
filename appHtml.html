@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+
+  <title></title>
+  <meta name="description" content="" />
+  <!-- 页面关键词 -->
+  <meta name="keywords" content="" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+
+  <style type="text/css">
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      line-height: 1.4;
+      -webkit-tap-highlight-color: transparent;
+      background: #f7f7f7;
+    }
+
+    #app {
+      height: 100%;
+    }
+
+  </style>
+  <!-- <script src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js "></script> -->
+</head>
+
+<body>
+  <div id="app"></div>
+  <!-- 设置屏幕响应式 -->
+  <script>
+    !(function (w, d) {
+      var root = d.documentElement;
+
+      function setRootFontSize() {
+        var w = root.clientWidth;
+        if (w > 414) {
+          w = 414;
+        } else if (w < 240) {
+          w = 240;
+        }
+
+        // 1rem = W/20
+        // 设计稿按DW = 375px
+        // 则设计稿1px = $_ = 1/18.75rem
+        var x = w / 18.75;
+        root.style.fontSize = x + "px";
+      }
+      (function setBodyFontSize() {
+        if (d.body) {
+          d.body.style.fontSize = "16px";
+        } else {
+          d.addEventListener("DOMContentLoaded", setBodyFontSize);
+        }
+      })();
+
+      setRootFontSize();
+      w.addEventListener("resize", function () {
+        setRootFontSize();
+      });
+      w.addEventListener("pageshow", function () {
+        setRootFontSize();
+      });
+    })(window, document);
+
+  </script>
+
+
+</body>
+
+</html>
