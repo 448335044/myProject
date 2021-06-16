@@ -7,6 +7,7 @@ export function myFlat(arr) {
   }, []);
 
   //----------------join(toString) and split----------------------------- 
+  // // join的本质也调了toString方法，只是内容可以随意拼接,见底
   // return arr.join(',').split(',').map(function(item) {
   //     return parseInt(item);
   // })
@@ -37,3 +38,18 @@ export function myFlat(arr) {
 }
 
 // console.log('newArr', myFlat(oldArr));
+
+
+// -------------------------------------------------------------------------------------------------------
+//测试join
+const elements = ['Fire', 'Air', 'Water',['Fire', 'Air', 'Water',['Fire', 'Air', 'Water',{'a':123}]]];
+
+console.log(elements.join());
+// > "Fire,Air,Water,Fire,Air,Water,Fire,Air,Water,[object Object]"
+
+console.log(elements.join(''));
+// > "FireAirWaterFire,Air,Water,Fire,Air,Water,[object Object]"
+
+
+console.log(elements.join('-'));
+// > "Fire-Air-Water-Fire,Air,Water,Fire,Air,Water,[object Object]"
