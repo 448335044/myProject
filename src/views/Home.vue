@@ -2,17 +2,25 @@
   <div class="home">
       <div>hello {{user.name}}</div>
       <div class="scroll-box">
-
+          <div class="img" v-for="item in imgData" :key="item.id">
+              <div class="imgId">{{item.id}}</div>
+              <img v-if="item.img" :src="item.img" alt="">
+              <div v-else class="bottom">{{item}}</div>
+          </div>
       </div>
   </div>
 </template>
 
 <script>
+import axios from "axios"
 import {throttle} from "../utils/throttle"
 export default {
     data() {
         return {
-            user: null
+            user: null,
+            currentPage: 1, //当前页
+            pageSize: 4,   //每页获取多少条
+            imgData: [],  // 展示的数据
         }
     },
     created() {
@@ -47,24 +55,46 @@ export default {
             console.log('scrollHeight', scrollHeight);
             if (scrollTop == 0) {
             console.log("到顶")
-            this.onPullDownRefresh();
+            // this.onPullDownRefresh();
+            _this.onPullDownRefresh();
             }
             if (scrollTop + windowHeight == scrollHeight) {
             console.log("到底")
-            this.onReachBottom();
+            // this.onReachBottom();
+            _this.onReachBottom();
             }
         };
 
-        window.onscroll = throttle(scrollFn,50, _this)
+        // window.onscroll = throttle(scrollFn, 20, _this)
+        window.onscroll = scrollFn
+    },
+    mounted() {
+        this.load(this.currentPage, this.pageSize)
     },
     methods: {
+        // 请求数据
+        load(currentPage, pageSize) {
+            axios.get(`http://localhost:8889/fruits?_page=${currentPage}&_limit=${pageSize}`).then(e => {
+                console.log('e', e.data);
+                let data = e.data.length ? e.data : ['到底了']
+
+
+                this.imgData = this.imgData.concat(data)
+                console.log('this.imgData', this.imgData);
+            })
+        },
         // 请求上一页数据
         onPullDownRefresh() {
             console.log('请求上一页')
         },
         // 请求下一页数据
         onReachBottom() {
+            // 到底了就不再发送请求了
+            if(this.imgData[this.imgData.length-1] === '到底了') return false;
+            
             console.log('请求下一页')
+            this.currentPage +=1
+            this.load(this.currentPage, this.pageSize)
         }
 
     },
@@ -83,5 +113,19 @@ export default {
             color: #FF0000;
         }
     }
-
+    .img{
+        position: relative;
+        img{
+            height:300px;
+            opacity: .1;
+        }
+        .imgId{
+            position: absolute;
+            left:20px;
+            top:20px;
+        }
+        .bottom{
+            text-align: center;
+        }
+    }
 </style>
