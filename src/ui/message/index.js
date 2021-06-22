@@ -5,13 +5,15 @@ let MessageConstructor = Vue.extend(MessageTel);
 let messageInstance = null
 
 const Message = function(options){
-  console.log('options', options);
+
   messageInstance = new MessageConstructor({
+    // el: document.createElement('div'),
     data: options
   })
 
   messageInstance.$mount();
   document.body.appendChild(messageInstance.$el);
+
 }
 
 // 直接调用某种类型

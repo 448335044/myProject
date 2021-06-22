@@ -5,12 +5,8 @@
         <div>{{ text.title }}</div>
         <p>{{ text.msg }}</p>
         <div class="btn">
-          <span @click="close()" v-if="text.btn.cancelText">{{
-            text.btn.cancelText
-          }}</span>
-          <span @click="ok()" v-if="text.btn.okText">{{
-            text.btn.okText
-          }}</span>
+          <span @click="close()" v-if="text.btn.cancelText">{{text.btn.cancelText}}</span>
+          <span @click="ok()" v-if="text.btn.okText">{{text.btn.okText}}</span>
         </div>
       </div>
     </div>
@@ -25,8 +21,8 @@ export default {
         title: "提示",
         msg: "确定删除此条信息？",
         btn: {
-          okText: "确定",
-          cancelText: "取消",
+          okText: "",
+          cancelText: "",
         },
       },
     };
@@ -77,7 +73,7 @@ export default {
 }
 .btn {
   padding: 15px;
-  text-align: right;
+  text-align: center;
 }
 .btn span {
   padding: 10px 35px;
