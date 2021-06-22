@@ -3,6 +3,11 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+// import Message from '@/ui/message/index.js'
+// Vue.use(Message)
+import Message from '@/ui/message/index.js'
+Vue.prototype.$message = Message
+
 Vue.config.productionTip = false
 
  

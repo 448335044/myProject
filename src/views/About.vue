@@ -1,7 +1,7 @@
 <template>
   <div class="about">
     <input type="text" value="输入框">
-    <div class="a-btn">按钮</div>
+    <div class="a-btn" @click="showMsg">弹个小窗窗</div>
       {{weaterStatus}}
       {{messageStoreContent}}
   </div>
@@ -9,12 +9,17 @@
 
 <script>
 import {mapState,mapActions, mapGetters} from 'vuex'
-
+import axios from "axios"
 export default {
   created() {
-    console.log('this。weaterStatus', this.weaterStatus);
+    // console.log('this。weaterStatus', this.weaterStatus);
     this.mesAction("ppp")
-    console.log('this.messageStoreContent', this.messageStoreContent);
+    // console.log('this.messageStoreContent', this.messageStoreContent);
+
+    // 调用本地express mysql 接口
+    axios.get(`http://127.0.0.1:3050/api/getuser`).then(e => {
+        // console.log('e', e);
+    })
   },
   computed: {
     ...mapState({messageStoreContent: state => state.messageStore.content}),
@@ -24,7 +29,17 @@ export default {
     // ...mapGetters('messageStore'，['status'])
   },
   methods: {
-    ...mapActions('messageStore',['mesAction'])
+    ...mapActions('messageStore',['mesAction']),
+    showMsg() {
+      this.$message({
+        type: 'info',
+        content: '这是小窗窗',
+        duration: 1000,
+        onClose() {
+          console.log('一秒即关闭');
+        }
+      })
+    }
   }
 
 }
