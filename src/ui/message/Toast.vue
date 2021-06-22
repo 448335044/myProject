@@ -9,8 +9,8 @@ export default {
     return {
       bgType: {
         info: 'background: rgba(0, 0, 0, 0.8);',
-        success: 'background: rgba(39, 209, 142, 0.8);',
-        error: 'background: rgba(190, 53, 31, 0.8);',
+        success: 'background: rgba(39, 209, 142, 0.7);',
+        error: 'background: rgba(190, 53, 31, 0.6);',
       },
       type: 'info',
       content: '',

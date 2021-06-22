@@ -1,9 +1,12 @@
 <template>
   <div class="about">
-    <input type="text" value="输入框">
-    <div class="a-btn" @click="showMsg">弹个小窗窗</div>
-      {{weaterStatus}}
-      {{messageStoreContent}}
+    <!-- <div class="a-btn" @click="showMsgNew">再弹个小窗窗</div> -->
+      <!-- {{weaterStatus}}
+      {{messageStoreContent}} -->
+      <div>
+        <div class="a-btn" @click="showMsg">弹个小窗窗</div>
+        <div class="a-btn" @click="confirm">删除</div>
+      </div>
   </div>
 </template>
 
@@ -39,6 +42,33 @@ export default {
           console.log('一秒即关闭');
         }
       })
+    },
+    // // 直接调用某种类型
+    // showMsgNew() {
+    //   this.$message.success({
+    //     // type: 'info',
+    //     content: 'new小窗窗',
+    //     duration: 1000,
+    //     onClose() {
+    //       console.log('一秒即关闭');
+    //     }
+    //   })
+    // }
+    confirm() {
+        this.$popup({
+          title: '提示',
+          msg: '确认删除此篇周计划吗？',
+          btn: {
+            okText: '确定',
+            cancelText: '取消'
+          }
+        })
+        .then(() => {
+　　　　　　console.log('执行确定的回调');
+        })
+        .catch(() => {
+          console.log('执行取消的回调');
+        })
     }
   }
 
@@ -47,7 +77,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/common.scss';
-
+  .a-btn{
+    margin:10*$px 40*$px;
+  }
   .about{
     font-size: 20 * $px;
   }

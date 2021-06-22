@@ -14,11 +14,18 @@ const Message = function(options){
   document.body.appendChild(messageInstance.$el);
 }
 
+// 直接调用某种类型
+let typeArr = ['success', 'error', 'info']
+typeArr.forEach((type) => {
+  Message[type] = (options) => {
+    options.type = type
+    return Message(options)
+  }
+})
 
 export default Message
-
 // export default {
 //   install(vue) {
-//     vue.prototype.$mymessage = Message
+//     vue.prototype.$message = Message
 //   }
 // }

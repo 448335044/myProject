@@ -3,10 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import UI from '@/ui/index.js'
+Vue.use(UI)
+// import message from '@/ui/message/index.js'
+// Vue.use(message)
+// import popup from '@/ui/popup/index.js'
+// Vue.use(popup)
+
 // import Message from '@/ui/message/index.js'
-// Vue.use(Message)
-import Message from '@/ui/message/index.js'
-Vue.prototype.$message = Message
+// Vue.prototype.$message = Message
 
 Vue.config.productionTip = false
 
