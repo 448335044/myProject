@@ -2,6 +2,7 @@
 import rawRequest from './raw-request';
 import transformers from './transformers/index';
 import addAuthorization from './transformers/addAuthorization';
+import vueInstance from '../main'
 
 function request_gateway(transform, config, retry = true) {
   return addAuthorization(config).then(opt => {
@@ -12,17 +13,18 @@ function request_gateway(transform, config, retry = true) {
       // const code = get(body, 'res.code');
       const code = res.statusCode;
 
-      return body
+      // return body
+
       // 响应拦截
-      // if(code !== 200){
-      //   return body
-      // } else{
-      //   this.$message({
-      //     type: 'info',
-      //     content: '请求出错，要不再来一次',
-      //     duration: 1000
-      //   })
-      // }
+      if(code === 200){
+        return body
+      } else{
+        vueInstance.$message({
+          type: 'error',
+          content: '请求出错，要不再来一次',
+          duration: 1000
+        })
+      }
       
     });
   });

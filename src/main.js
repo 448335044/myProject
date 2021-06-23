@@ -19,13 +19,14 @@ Vue.prototype.$api = api
 
 Vue.config.productionTip = false
 
- 
-new Vue({
+export default new Vue({
   el: '#app',
   router,
   store,
   render: h => h(App)
   }).$mount('#app')
 
+
+ 
 
 
