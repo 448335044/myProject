@@ -5,6 +5,7 @@ import store from './store'
 
 import UI from '@/ui/index.js'
 Vue.use(UI)
+
 // import message from '@/ui/message/index.js'
 // Vue.use(message)
 // import popup from '@/ui/popup/index.js'
@@ -12,6 +13,9 @@ Vue.use(UI)
 
 // import Message from '@/ui/message/index.js'
 // Vue.prototype.$message = Message
+
+import api from "./api"
+Vue.prototype.$api = api
 
 Vue.config.productionTip = false
 

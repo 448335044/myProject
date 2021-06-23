@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-      <div>hello {{user.name}}</div>
+      <!-- <div>hello {{user.name}}</div> -->
+      <div>home</div>
       <div class="scroll-box">
           <div class="img" v-for="item in imgData" :key="item.id">
               <div class="imgId">{{item.id}}</div>
@@ -24,6 +25,12 @@ export default {
         }
     },
     created() {
+        this.$api.search_user_h5({user:123, _page: 2, _limit: 3}).then(e=>{
+            console.log('e', e);
+        }).catch(err=>{
+            console.log('err', err);
+        })
+
         console.log('module', this.$store);
         this.user = this.$store.state.userStore.uesr
         let _this = this;
@@ -75,7 +82,7 @@ export default {
         // 请求数据
         load(currentPage, pageSize) {
             axios.get(`http://localhost:8889/fruits?_page=${currentPage}&_limit=${pageSize}`).then(e => {
-                console.log('e', e.data);
+                // console.log('e', e.data);
                 let data = e.data.length ? e.data : ['到底了']
 
 

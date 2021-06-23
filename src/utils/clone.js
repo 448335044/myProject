@@ -15,7 +15,7 @@ let a = {
     },
     d: 456
   }
-export function clone(p) {
+export default function clone(p) {
     if (typeof p !== 'object' || p === null) return p
     let obj = {}
     for (const key in p) {

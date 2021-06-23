@@ -13,6 +13,7 @@
 <script>
 import {mapState,mapActions, mapGetters} from 'vuex'
 import axios from "axios"
+
 export default {
   created() {
     // console.log('this。weaterStatus', this.weaterStatus);
