@@ -7,6 +7,11 @@ import vueInstance from '../main'
 function request_gateway(transform, config, retry = true) {
   return addAuthorization(config).then(opt => {
     opt = transform(opt);
+    vueInstance.$message({
+      type: 'info',
+      content: 'loading...',
+      duration: 2000
+    })
     return rawRequest(opt).then(res => {
       console.log('拿到结果', res);
       const body = res.body;
