@@ -23,7 +23,7 @@ module.exports = {
         rules: [
           {
             test: /\.css$/i,
-            use: ['style-loader', 'css-loader'],
+            use: ['style-loader', 'css-loader', 'postcss-loader'],
           },
           {
             test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -31,7 +31,7 @@ module.exports = {
           },
           {
             test: /\.less$/,
-            use: ['style-loader','css-loader','less-loader']
+            use: ['style-loader','css-loader','less-loader', 'postcss-loader']
           }, 
           {
             test: /\.scss$/,

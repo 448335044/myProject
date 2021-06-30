@@ -1,7 +1,7 @@
 <template>
   <div class="home">
       <!-- <div>hello {{user.name}}</div> -->
-      <div>home</div>
+      <div class="title">home</div>
       <div class="scroll-box">
           <div class="img" v-for="item in imgData" :key="item.id">
               <div class="imgId">{{item.id}}</div>
@@ -136,3 +136,13 @@ export default {
         }
     }
 </style>
+
+<style scoped>
+.title{
+    background-color:aqua;
+    width:100px;
+    font-size: 12px;
+    padding: 20px 16px;
+}
+</style>
+
