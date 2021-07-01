@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// 导入全局指令
+import '@/utils/derective'
 
 import UI from '@/ui/index.js'
 Vue.use(UI)
@@ -24,7 +26,7 @@ export default new Vue({
   router,
   store,
   render: h => h(App)
-  }).$mount('#app')
+}).$mount('#app')
 
 
  

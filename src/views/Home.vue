@@ -1,7 +1,14 @@
 <template>
   <div class="home">
       <!-- <div>hello {{user.name}}</div> -->
-      <div class="title">home</div>
+
+      <!-- 模块化指令 -->
+      <div class="title" v-bg>home</div>
+      <input type="text"  value="123">
+      <input type="text" v-focus value="456">
+      <input type="text"  value="789">
+      <!-- 模块化指令 -->
+      
       <div class="scroll-box">
           <div class="img" v-for="item in imgData" :key="item.id">
               <div class="imgId">{{item.id}}</div>
