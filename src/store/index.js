@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import userStore from './module/user'
-import messageStore from './module/message'
+
+// import userStore from './module/user'
+// import messageStore from './module/message'
+import dyModules from "@/utils/dynamicModule"
+
+
+
 
 Vue.use(Vuex)
-
 export default new Vuex.Store({
     state: {
         content: '公共的今天也在下雨',
@@ -28,8 +32,9 @@ export default new Vuex.Store({
             console.log('Common-p', p);
         }
     },
-    modules: {
-        userStore,
-        messageStore
-    }
+    // modules: {
+    //     userStore,
+    //     messageStore
+    // }
+    modules: dyModules(require.context('./module', true, /\.js$/))   //高级用法，以后每新增一个模块不需要手动导入
 })

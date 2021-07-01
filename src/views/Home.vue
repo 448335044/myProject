@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-      <!-- <div>hello {{user.name}}</div> -->
-
+      <div>hello {{user.name}}</div>
+    <div v-fmMoney>111</div>
       <!-- 模块化指令 -->
       <div class="title" v-bg>home</div>
       <input type="text"  value="123">
@@ -39,7 +39,8 @@ export default {
         })
 
         console.log('module', this.$store);
-        this.user = this.$store.state.userStore.uesr
+        // 改造成了动态引入各模块，调用形式改为文件名就是模块名
+        this.user = this.$store.state.user.uesr
         let _this = this;
         
         // //引用工具函数的throtle
