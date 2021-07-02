@@ -2,9 +2,11 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+// 导入css文件
+import './asset/css/index.css'
 // 导入全局指令
 import '@/utils/derective'
-
+// 导入ui组件库
 import UI from '@/ui/index.js'
 Vue.use(UI)
 
@@ -12,10 +14,10 @@ Vue.use(UI)
 // Vue.use(message)
 // import popup from '@/ui/popup/index.js'
 // Vue.use(popup)
-
 // import Message from '@/ui/message/index.js'
 // Vue.prototype.$message = Message
 
+// 导入api模块
 import api from "./api"
 Vue.prototype.$api = api
 
