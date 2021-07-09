@@ -7,12 +7,22 @@ export default new VueRouter({
     routes: [
         {
             path: '/',
-            name: '首页',
+            name: 'login',
+            component: () => import('../views/Login.vue')
+        },
+        {
+            path: '/login',
+            name: 'login',
+            component: () => import('../views/Login.vue')
+        },
+        {
+            path: '/home',
+            name: 'home',
             component: () => import('../views/Home.vue')
         },
         {
             path: '/about',
-            name: '关于',
+            name: 'about',
             component: () => import('../views/About.vue')
         },
     ]
