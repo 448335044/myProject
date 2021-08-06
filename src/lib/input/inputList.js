@@ -23,6 +23,7 @@ export const loginList = [
   },
   {
     key: 'surePassword',
+    bindPassKey: 'password',  // 绑定关联密码的key
     type: 'password',
     inputTitle:"密码确认", 
     isShowTitle: false,

@@ -2,9 +2,11 @@
     <div class="login">
         <div class="input-container">
             <input-row class="input-item"      
-                v-for="item in loginList"
+                v-for="(item, index) in loginList"
                 :key="item.key"
-                :inputItem="item"
+                :inputItemData="item"
+                :inputItemIndex="index"
+                :inputListData="loginList"
                 :ref="item.key"
                 @changeform="changeform"
                 @inputform="inputform"
@@ -36,49 +38,27 @@ export default {
     },
     methods: {
         // input校验按钮
-        inputform(value, valueKey) {
-            // 校验按钮状态
-            this.isFinish = this.loginList.every(item => item.module)
-            // 如果当前项显示了正则的错误提示，没次输入都校验正则
-            this.loginList.forEach((inputItem) => {
-                inputItem.isShowMsg && this.changeform(value, valueKey)
-            })
+        inputform() {
+            
         },
         // bulr校验正则
-        changeform(value, valueKey) {
+        changeform(item, listIndex) {
+            this.loginList.splice(listIndex, 1, item)
+            this.checkBtn()
+            
             // 存储设置的密码
-            valueKey==='password'&& (this.userInfo.password = value)
-            valueKey==='user'&& (this.userInfo.username = value)
+            // valueKey==='password'&& (this.userInfo.password = value)
+            // valueKey==='user'&& (this.userInfo.username = value)
 
-            this.loginList.forEach((inputItem) => {
-                if(inputItem.key === valueKey) {
-                    inputItem.module = value
-
-                    let isRulePass = RegExp(inputItem['reg']).test(value)
-                    if(valueKey === 'surePassword') {
-                        // 确认密码校验
-                        inputItem.isShowMsg = (value===this.userInfo.password)? false : true
-                    }
-                    else{
-                        inputItem.isShowMsg = isRulePass ? false : true
-                    }
-                    
-                }  
-            })
             // // 校验按钮状态
             // this.isFinish = this.loginList.every(item => item.module)
 
         },
+        checkBtn() {
+            // 校验按钮状态
+            this.isFinish = this.loginList.every(item => item.module)
+        },
         GetIsShowErrMsg() {
-            this.loginList.forEach((inputItem) => {
-                let isRulePass = RegExp(inputItem['reg']).test(inputItem.module)
-                if(inputItem.key === 'surePassword') {
-                    // 确认密码校验
-                    inputItem.isShowMsg = (inputItem.module===this.userInfo.password)? false : true
-                }else{
-                    inputItem.isShowMsg = isRulePass ? false : true
-                }
-            })
             // 只要有一个错误提示显示了就不通过
             return this.loginList.some(item => item.isShowMsg)
         },
@@ -86,21 +66,7 @@ export default {
             // 聚焦到正则失败的input框
             let itemShowMsg = this.loginList.find(i => {return i.isShowMsg})
             itemShowMsg && this.$refs[itemShowMsg.key][0].$refs['inputRef'].focus()
-
-
-            // 按钮状态可点击
-            // if(this.isFinish) {
-            //     // 每个input正则校验都通过
-            //     if(this.GetIsShowErrMsg()){
-            //         this.$message({
-            //             type: error,
-            //             content: '输入信息有误，请检查输入信息！'
-            //         })
-            //         return false
-            //     }
-            //     this.registerFinishReq()
-            // }
-         
+            // 按钮可点击并且没有错误校验提示才能去请求
             this.isFinish && !this.GetIsShowErrMsg() && this.registerFinishReq()
         },
         // 请求登录接口
@@ -118,8 +84,6 @@ export default {
                     type: 'error'
                 })
             }
-
-            
         }
     }
  
