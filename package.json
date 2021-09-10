@@ -4,9 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve --open --hot",
-    "build": "webpack --config webpack.config.js"
+    "test": "cross-env NODE_ENV=test webpack --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "@babel/core": "^7.11.6",
     "@babel/preset-env": "^7.11.5",
     "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "html-webpack-plugin": "^5.3.1",
     "less": "^3.12.2",
