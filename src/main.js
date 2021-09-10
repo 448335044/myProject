@@ -8,6 +8,9 @@ import './asset/css/index.css'
 import '@/utils/derective'
 // 导入ui组件库
 import UI from '@/ui/index.js'
+// 导入eruda工具
+import '@/utils/eruda'
+
 Vue.use(UI)
 
 // import message from '@/ui/message/index.js'
