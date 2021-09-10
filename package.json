@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --open --hot",
-    "test": "cross-env NODE_ENV=test webpack --config webpack.config.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js"
+    "test": "rimraf ./dist/* && cross-env NODE_ENV=test webpack --config webpack.config.js",
+    "build": "rimraf ./dist/* && cross-env NODE_ENV=production webpack --config webpack.config.js"
   },
   "keywords": [],
   "author": "",
@@ -39,6 +39,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "eruda": "^2.4.1",
-    "qs": "^6.10.1"
+    "qs": "^6.10.1",
+    "rimraf": "^3.0.2"
   }
 }
