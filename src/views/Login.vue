@@ -12,7 +12,7 @@
                 @inputform="inputform"
             ></input-row>
         </div>
-        <div @click="finish" class="a-btn btn-finish" :class="isFinish?(GetIsShowErrMsg()?'bubbly-button unDisabled':'unDisabled'):'disabled'">登录</div>
+        <div @tap="finish" class="a-btn btn-finish" :class="isFinish?(GetIsShowErrMsg()?'bubbly-button unDisabled':'unDisabled'):'disabled'">登录</div>
     </div>
 </template>
 
@@ -63,6 +63,7 @@ export default {
             return this.loginList.some(item => item.isShowMsg)
         },
         finish() {
+            alert("tap点击了")
             // 聚焦到正则失败的input框
             let itemShowMsg = this.loginList.find(i => {return i.isShowMsg})
             itemShowMsg && this.$refs[itemShowMsg.key][0].$refs['inputRef'].focus()
@@ -72,18 +73,19 @@ export default {
         // 请求登录接口
         registerFinishReq() {
             console.log('登录信息', this.userInfo)
-            if(this.userInfo.username==='admin' && this.userInfo.password==='admin123456'){
-                this.$message({
-                    content:'恭喜老铁！登录成功',
-                    type: 'success'
-                })
-                this.$router.push({path:'/home'})
-            }else{
-                this.$message({
-                    content:'登录失败，账号或密码有误',
-                    type: 'error'
-                })
-            }
+            this.$router.push({path:'/home'})
+            // if(this.userInfo.username==='admin' && this.userInfo.password==='admin123456'){
+            //     this.$message({
+            //         content:'恭喜老铁！登录成功',
+            //         type: 'success'
+            //     })
+            //     this.$router.push({path:'/home'})
+            // }else{
+            //     this.$message({
+            //         content:'登录失败，账号或密码有误',
+            //         type: 'error'
+            //     })
+            // }
         }
     }
  

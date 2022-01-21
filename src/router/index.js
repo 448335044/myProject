@@ -4,11 +4,13 @@ import Vue from 'vue';
 Vue.use(VueRouter)
 
 export default new VueRouter({
+    mode: 'history',
+    // base: process.env.NODE_ENV === 'production' ? '/app' : '/web',
+    base: '/app',
     routes: [
         {
             path: '/',
-            name: 'login',
-            component: () => import('../views/Login.vue')
+            redirect: "/login"
         },
         {
             path: '/login',
@@ -24,6 +26,11 @@ export default new VueRouter({
             path: '/about',
             name: 'about',
             component: () => import('../views/About.vue')
+        },
+        {
+            path: '/testSlideDelete',
+            name: 'testSlideDelete',
+            component: () => import('../views/test/testSlideDelete/index.vue')
         },
     ]
 })

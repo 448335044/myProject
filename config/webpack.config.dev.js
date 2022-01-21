@@ -12,12 +12,22 @@ const webpackConfig = webpackMerge.merge(commonConfig, {
   output: {
     filename: 'myMain.js',
     path: path.resolve(__dirname, '../dist'),
-    clean: true,
+    publicPath: "/app",
+    // clean: true,
   },
   plugins: [
     // EnvironmentPlugin 可动态切换环境，便于使用不同环境定义的常量， 和definePlugins差不多
     new webpack.EnvironmentPlugin(environment),
   ],
+  devServer: {
+    host: '192.168.100.207',
+    contentBase: '../dist',
+    inline: false,
+    historyApiFallback: {
+      index: '/app/index.html' //与output的publicPath
+    },
+    // open: false,  // 自动打开浏览器
+  },
 }) 
 
 module.exports = webpackConfig;

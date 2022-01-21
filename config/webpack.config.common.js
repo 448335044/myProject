@@ -57,12 +57,7 @@ const webpackConfig = {
         vue: 'vue/dist/vue.esm.js',
         '@': path.resolve(__dirname, '../src'),
       } 
-    },
-    devServer: {
-        contentBase: './dist',
-        inline: false,
-        // open: false,  // 自动打开浏览器
-    },
+    }
     // devServer: {
     //     port: 5000,
     //     progress: true,  // 显示打包的进度条

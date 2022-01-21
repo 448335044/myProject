@@ -1,21 +1,24 @@
 <template>
   <div class="home">
-      <div>hello {{user.name}}</div>
+    <div>hello {{user.name}}</div>
     <div v-fmMoney>111</div>
-      <!-- 模块化指令 -->
-      <div class="title" v-bg>home</div>
-      <input type="text"  value="123">
-      <input type="text" v-focus value="456">
-      <input type="text"  value="789">
-      <!-- 模块化指令 -->
-      
-      <div class="scroll-box">
-          <div class="img" v-for="item in imgData" :key="item.id">
-              <div class="imgId">{{item.id}}</div>
-              <img v-if="item.img" :src="item.img" alt="">
-              <div v-else class="bottom">{{item}}</div>
-          </div>
-      </div>
+    <!-- 模块化指令 -->
+    <div class="title" v-bg>home</div>
+    <input type="text"  value="123">
+    <input type="text" v-focus value="456">
+    <input type="text"  value="789">
+    <!-- 模块化指令 -->
+    
+    <div class="scroll-box">
+        <div class="img" v-for="item in imgData" :key="item.id">
+            <div class="imgId">{{item.id}}</div>
+            <img v-if="item.img" :src="item.img" alt="">
+            <div v-else class="bottom">{{item}}</div>
+        </div>
+    </div>
+
+    <!-- 滑动删除 -->
+    <div @click="testSlideDelete">滑动删除</div>
   </div>
 </template>
 
@@ -110,6 +113,10 @@ export default {
             console.log('请求下一页')
             this.currentPage +=1
             this.load(this.currentPage, this.pageSize)
+        },
+        // 跳转滑动删除页面
+        testSlideDelete() {
+            this.$router.push({path:'/testSlideDelete'})
         }
 
     },

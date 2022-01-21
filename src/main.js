@@ -13,7 +13,7 @@ import '@/utils/eruda'
 
 Vue.use(UI)
 // 可在不同环境使用定义的不同环境常量
-console.log('process.env', process.env.API_URL)
+// console.log('process.env', process.env.API_URL)
 
 // import message from '@/ui/message/index.js'
 // Vue.use(message)

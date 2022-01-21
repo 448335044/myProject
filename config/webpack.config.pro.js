@@ -9,7 +9,8 @@ const webpackConfig = webpackMerge.merge(commonConfig, {
   output: {
       filename: 'myMain.js',
       path: path.resolve(__dirname, '../dist'),
-      clean: true,
+      publicPath: "/app/",
+      // clean: true,
   },
 }) 
 
