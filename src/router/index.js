@@ -32,6 +32,11 @@ export default new VueRouter({
             name: 'testSlideDelete',
             component: () => import('../views/test/testSlideDelete/index.vue')
         },
+        {
+            path: '/testAmap',
+            name: 'testAmap',
+            component: () => import('../views/test/amap/index.vue')
+        },
     ]
 })
 
