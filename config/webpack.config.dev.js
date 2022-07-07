@@ -21,9 +21,15 @@ console.log(moduleName);
 // 开发环境的配置和公共的配置合并
 const webpackConfig = webpackMerge.merge(commonConfig, {
   mode: 'development',
+<<<<<<< HEAD
   entry: './src/main.js',
   // 按模块打包
   // entry: `./src/projects/${moduleName}/entry.js`,
+=======
+  // entry: './src/main.js',
+  // 按模块打包
+  entry: `./src/projects/${moduleName}/entry.js`,
+>>>>>>> 7f2acc5a652bceb8edfa085b01260aa958403cdb
   output: {
     filename: 'myMain.js',
     path: path.resolve(__dirname, '../dist'),
