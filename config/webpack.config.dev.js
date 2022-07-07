@@ -5,10 +5,25 @@ const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.config.common');
 // 引入开发环境常量
 const environment = require('./env/dev.env');
+// module Name
+let moduleName = process.env.moduleName
+console.log(moduleName);
+// const argv = require('minimist')(process.argv.slice(2));
+// if (argv && argv.env && argv.env.module) {
+//   moduleName = argv.env.module;
+//   console.log("---------------")
+//   console.log(moduleName)
+//   console.log("---------------")
+// } else {
+//   throw new Error('A module must be specified to build!');
+// }
+
 // 开发环境的配置和公共的配置合并
 const webpackConfig = webpackMerge.merge(commonConfig, {
   mode: 'development',
   entry: './src/main.js',
+  // 按模块打包
+  // entry: `./src/projects/${moduleName}/entry.js`,
   output: {
     filename: 'myMain.js',
     path: path.resolve(__dirname, '../dist'),

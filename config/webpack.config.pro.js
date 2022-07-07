@@ -5,7 +5,8 @@ const commonConfig = require('./webpack.config.common');
 // 生产环境的配置和公共的配置合并
 const webpackConfig = webpackMerge.merge(commonConfig, {
   mode: 'production',
-  entry: './src/main.js',
+  // entry: './src/main.js',
+  entry: [`./src/projects/moduleA/entry.js`, `./src/projects/moduleB/entry.js`],
   output: {
       filename: 'myMain.js',
       path: path.resolve(__dirname, '../dist'),

@@ -4,7 +4,9 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "webpack serve --open --hot",
+    "start": "cross-env webpack serve --open --hot",
+    "startA": "cross-env moduleName=moduleA webpack serve --open --hot",
+    "startB": "cross-env moduleName=moduleB webpack serve --open --hot",
     "test": "rimraf ./dist/* && cross-env NODE_ENV=test webpack --config webpack.config.js",
     "build": "rimraf ./dist/* && cross-env NODE_ENV=production webpack --config webpack.config.js"
   },

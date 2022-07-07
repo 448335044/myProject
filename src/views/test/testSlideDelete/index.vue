@@ -1,7 +1,7 @@
 <template>
  <div class="mylist">  
   <div class="title">列表</div>
-  <delete-slider class="item" v-for="(list, index) in dataList" :key="index" @deleteLine="deleteLine(index, list.id)">
+  <delete-slider  @click="toDetail" class="item" v-for="(list, index) in dataList" :key="index" @deleteLine="deleteLine(index, list.id)">
    <!-- <div class="li-img" slot="img"><img :src="list.img" alt=""></div> -->
    <h3 class="li-title" slot="title">{{list.title}}</h3>
    <p class="li-price" slot="price">{{list.price}}</p>
@@ -13,11 +13,12 @@
 
 
 import deleteSlider from './deleteTemp.vue'
-
+import axios from 'axios'
 export default {
  components: {
   deleteSlider
  },
+ 
  data () {
   return {
    dataList: [
@@ -72,11 +73,20 @@ export default {
    ]
   }
  },
+created() {
+  axios.get(`http://39.96.2.155/api/my-airport/airport/allDomesticAirportList`).then(data => {
+        console.log('this.imgData', data);
+    })
+},
  methods:{
    deleteLine (index, id){
     console.log(id);
-    
-    this.dataList.splice(index, 1)
+    this.$router.push('/testSlideDeleteDetail')
+    // this.dataList.splice(index, 1)
+   },
+   toDetail() {
+     console.log(1111)
+     this.$router.push('/testSlideDeleteDetail')
    }   
   }
 }

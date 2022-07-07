@@ -1,5 +1,8 @@
 <template>
     <div class="login">
+        <div @click="$router.push('A')">1111</div>
+        <div @click="aaa">2222</div>
+        <!-- <iframe src="https://wtest.133.cn/hangban/partner/citsgbt/vue/checkin/start?token=cacfe32d8fc94c06b324ff8309f427b6" frameborder="0" width="1000px" height="650px"></iframe> -->
         <div class="input-container">
             <input-row class="input-item"      
                 v-for="(item, index) in loginList"
@@ -22,6 +25,8 @@ import inputRow from '@/lib/input/componment/input-row.vue'
 // 引入表单组数据
 import {loginList} from '@/lib/input/inputList'
 
+import axios from 'axios'
+
 export default {
     components:{
         inputRow,
@@ -36,7 +41,19 @@ export default {
             }
         }
     },
+    create() {
+         axios.get(`http://39.96.2.155/api/my-airport/airport/allDomesticAirportList`).then(data => {
+        
+
+
+              
+                console.log('this.imgData', data);
+            })
+    },
     methods: {
+        aaa() {
+            window.location.href = 'https://wtest.133.cn/hangban/partner/fbt/vue/checkin/start?token=e3839347-9985-417a-bc9e-aced4bdab801'
+        },
         // input校验按钮
         inputform() {
             

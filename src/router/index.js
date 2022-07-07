@@ -33,9 +33,34 @@ export default new VueRouter({
             component: () => import('../views/test/testSlideDelete/index.vue')
         },
         {
+            path: '/testSlideDeleteDetail',
+            name: 'testSlideDeleteDetail',
+            component: () => import('../views/test/testSlideDelete/detail.vue')
+        },
+        {
             path: '/testAmap',
             name: 'testAmap',
             component: () => import('../views/test/amap/index.vue')
+        },
+        {
+            path: '/A',
+            name: 'a',
+            component: () => import('../views/to/A.vue')
+        },
+        {
+            path: '/B',
+            name: 'a',
+            component: () => import('../views/to/B.vue')
+        },
+        {
+            path: '/C',
+            name: 'a',
+            component: () => import('../views/to/C.vue')
+        },
+        {
+            path: '/D',
+            name: 'a',
+            component: () => import('../views/to/D.vue')
         },
     ]
 })
